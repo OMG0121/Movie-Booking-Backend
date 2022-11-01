@@ -1,25 +1,43 @@
+const http = require("http");
+const db = require('./models/index');
 
-const http = require('http');
+const port = 9000;
 
-const server = http.createServer((request, response) => {
-    if (request.url == '/movies') {
-        if (request.method == 'GET') {
-            response.write("All Movies Data in JSON format from Mongo DB");
-        } 
-    } 
-    else if (request.url == '/genres') {
-        if (request.method == 'GET') {
-            response.write("All Genres Data in JSON format from Mongo DB");
-        }
-    } else if (request.url == '/artists') {
-        if (request.method == 'GET') {
-            response.write("All Artists Data in JSON format from Mongo DB");
-        }
+const app = http.createServer((request, response) => {
+    if (request.url === "/movies") {
+        response.writeHead(200, {"Content-Type" : "text/html"});
+        response.write("<h1>All Movies Data in JSON format from Mongo DB</h1>");
+        response.end();
     }
-    response.end();
+    else if (request.url === "/genres") {
+        response.writeHead(200, {"Content-Type" : "text/html"});
+        response.write("<h1>All Genres Data in JSON format from Mongo DB</h1>");
+        response.end();
+    }
+    else if (request.url === "/artists") {
+        response.writeHead(200, {"Content-Type" : "text/html"});
+        response.write("<h1>All Artists Data in JSON format from Mongo DB</h1>");
+        response.end();
+    }
+    else {
+        response.writeHead(404, {"Content-Type" : "text/html"});
+        response.write("<h1>Not Found</h1>");
+        response.end();
+    }
 });
 
+db.mongoose.connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+.then(() => {
+    console.log("Connected to the database!");
+})
+.catch(err => {
+    console.log("Cannot connect to the database!", err);
+    process.exit();
+});
 
-server.listen(9000, () => {
-    console.log('server started on port 9000');
+app.listen(port, () => {
+    `App started at port ${port}`
 });
