@@ -88,4 +88,53 @@ const logout = async (req, res) => {
     
 }
 
-module.exports = {signUp, login, logout};
+const getCouponCode = async (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    if (username === undefined && password === undefined) {
+        res.status(401).send("Please enter username and password");
+        return;
+    }
+
+    let userData = await users.find({username: encoder(username)});
+
+    if (userData.length === 0) {
+        res.status(401).send("Incorrect Username");
+    }
+    else {
+        if (userData[0].password === encoder(password)) {
+            res.send(userData[0].coupens);
+        }
+        else {
+            res.status(401).send("Incorrect Password");
+        }
+    }
+    
+}
+
+const bookShow = async (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
+    if (username === undefined && password === undefined) {
+        res.status(401).send("Please enter username and password");
+        return;
+    }
+
+    let userData = await users.find({username: encoder(username)});
+
+    if (userData.length === 0) {
+        res.status(401).send("Incorrect Username");
+    }
+    else {
+        if (userData[0].password === encoder(password)) {
+            res.send(userData[0].coupens);
+        }
+        else {
+            res.status(401).send("Incorrect Password");
+        }
+    }
+}
+
+module.exports = {signUp, login, logout, getCouponCode, bookShow};
