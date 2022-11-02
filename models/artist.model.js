@@ -10,4 +10,6 @@ const artistSchema = new mongoose.Schema({
     movies: Array
 });
 
-module.exports = mongoose.model("artists", artistSchema);
+const artists = mongoose.model("artists", artistSchema)
+
+module.exports = artists;
