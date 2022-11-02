@@ -17,4 +17,6 @@ const usersSchema = new mongoose.Schema({
     bookingRequests: Array,
 });
 
-module.exports = mongoose.model("users", usersSchema);
+const users = mongoose.model("users", usersSchema)
+
+module.exports = users;
