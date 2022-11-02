@@ -23,6 +23,7 @@ const findOne = async (req, res) => {
 }
 
 const findShows = async (req, res) => {
+    console.log(req.query);
     let title = req.query.title;
     let genres = req.query.genres;
     let artists = req.query.artists;

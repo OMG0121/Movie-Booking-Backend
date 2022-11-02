@@ -8,7 +8,7 @@ const genresRoutes = require('./routes/genre.routes');
 const userRoutes = require('./routes/user.routes');
 
 const app = express();
-const port = 3000;
+const port = 8085;
 
 app.use(cors());
 app.use(bodyParser.json());

@@ -3,10 +3,10 @@ const {findAllMovies, findOne, findShows} = require('../controllers/movie.contro
 
 const router = express.Router();
 
-router.get('/movies', findAllMovies);
+router.get('/api/movies', findAllMovies);
 
-router.get('/movies/search', findShows);
+router.get('/api/movies/search', findShows);
 
-router.get('/movies/:movieId', findOne);
+router.get('/api/movies/:movieId', findOne);
 
 module.exports = router;

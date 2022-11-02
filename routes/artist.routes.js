@@ -3,6 +3,6 @@ const findAllArtists = require('../controllers/artist.controller')
 
 const router = express.Router();
 
-router.get('/artists', findAllArtists);
+router.get('/api/artists', findAllArtists);
 
 module.exports = router;
