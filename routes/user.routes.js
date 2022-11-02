@@ -9,8 +9,8 @@ router.post('/api/auth/login', login);
 
 router.post('/api/auth/logout', logout);
 
-router.get('/api/getCouponCode', getCouponCode);
+router.get('/api/auth/coupons', getCouponCode);
 
-router.get('/api/bookShow', bookShow);
+router.post('/api/auth/bookings', bookShow);
 
 module.exports = router;
